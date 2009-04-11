@@ -1,0 +1,28 @@
+Skip Lists, probably good.
+
+Skip lists are relatively new comers to the data structures scene (invented in the 90s).
+They differ from most data structures by being probabilistic rather than deterministic.
+ 
+Search, insertion and deletion times are expected to be O(log n) with a very high probability.
+
+Skip lists are normal linked lists with additional layers that enable queries to *skip*
+elements. They are much simpler than other O(log n) structures like Red Black Trees
+
+The skip list supports inserting multiple values for the same key. Values will be stored
+in a list attached to that key. Even a single value will be stored in a list
+
+Keys should implement <=> or you provide your own comparison block to the constructor
+
+The implementation still lacks range searches but they are on the todo list
+
+Here's a quick benchmark for insertion and search performance versus a normal array
+
+SkipList
+Inserting 16384 items 0.3022 s (18.44 microseconds) (~16x slower)
+Searching 16384 times 0.1931 s (11.786 microseconds) (~80x faster)
+
+Array
+Inserting 16384 items 0.01934 s (1.18 microseconds)
+Searching 16384 times 15.6141 s (953 microseconds)
+
+For this particular case a SkipList is ~16X slower than normal arrays for insertion of new values but they are like ~80x faster for searching
